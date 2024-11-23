@@ -41,6 +41,9 @@ target_compile_options(physics PRIVATE
         $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>
         )
 
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(SFML_USE_STATIC_STD_LIBS ON CACHE BOOL "" FORCE)
+
 set(CPACK_PACKAGE_NAME "physics")
 set(CPACK_GENERATOR "DEB;ZIP")
 
