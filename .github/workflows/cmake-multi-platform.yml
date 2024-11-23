@@ -46,7 +46,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y libsfml-dev libgl1-mesa-dev libx11-dev cmake
-        
+
     - name: Install minGW
       if: matrix.os == 'windows-latest'
       run: |
@@ -66,7 +66,9 @@ jobs:
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -S ${{ github.workspace }}
 
-
+    - name: Copy SFML DLLs to bin folder
+        run: |
+          cp /path/to/sfml/libs/*.dll ./bin/
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       run: |
