@@ -41,6 +41,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install dependencies (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt update
+        sudo apt install -y libsfml-dev libgl1-mesa-dev libx11-dev cmake
+        
     - name: Install minGW
       if: matrix.os == 'windows-latest'
       run: |
@@ -85,8 +91,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./containers-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
-        asset_name: containers-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
+        asset_path: ./physics-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
+        asset_name: physics-0.1.0-${{ matrix.os_short }}.${{ matrix.cpack_type }}
         asset_content_type: application/${{ matrix.cpack_type }}
 
     
