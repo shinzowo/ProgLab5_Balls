@@ -18,6 +18,7 @@ else ()
     set(SFML_BUILD_AUDIO OFF CACHE BOOL "" FORCE)
     set(SFML_BUILD_NETWORK OFF CACHE BOOL "" FORCE)
     set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    set(SFML_STATIC_LIBRARIES TRUE CACHE BOOL "" FORCE)
     # Обход потенциальных проблем при сборке sfml-graphics
     # (stb_image.h: 'argument': conversion from 'int' to 'short')
     set(WARNINGS_AS_ERRORS FALSE CACHE BOOL "" FORCE)
