@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.7.2)
-project(physics VERSION 0.1.0)
+project(physics VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Пытаемся найти предустановленный SFML
 find_package(SFML COMPONENTS graphics)
@@ -25,6 +26,7 @@ else ()
     FetchContent_MakeAvailable(SFML)
 endif ()
 
+
 # К сожалению, вплоть до C++20 https://en.cppreference.com/w/cpp/numeric/constants
 # нет удобного кроссплатформенного способа получить число pi.
 # define ниже нужен для включения M_PI
@@ -36,6 +38,11 @@ add_executable(physics
         main.cpp World.cpp Ball.cpp Physics.cpp Color.cpp Painter.cpp
         black_box/Application.cpp black_box/View.cpp black_box/PainterImpl.cpp Dust.cpp)
 target_link_libraries(physics PRIVATE sfml-graphics)
+
+# Если используем MinGW, добавляем флаги для статической линковки
+if(MINGW)
+    target_link_options(physics PRIVATE -static-libgcc -static-libstdc++)
+endif()
 
 target_compile_options(physics PRIVATE
         $<$<CXX_COMPILER_ID:MSVC>:/W4>

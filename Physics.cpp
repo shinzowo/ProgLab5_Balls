@@ -112,7 +112,7 @@ void Physics::processCollision(Ball& a, Ball& b,
         double vx = pow(-1,rand()%2)*500;
         double vy = pow(-1,rand()%2)*500;
 
-        std::cout<<"Velocity particles:"<<vx<<" "<<vy<<"\n";
+
         particles.emplace_back(collisionPoint, Velocity(vx, vy), 200); 
     }
 }
