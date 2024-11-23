@@ -2,7 +2,7 @@
 #include "Painter.h"
 #include "Point.h"
 #include "Velocity.h"
-#include "color.h"
+#include "Color.h"
 
 class Ball {
 public:
