@@ -40,7 +40,7 @@ target_compile_options(physics PRIVATE
         $<$<CXX_COMPILER_ID:MSVC>:/W4>
         $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>
         )
-        
+
 set(CPACK_PACKAGE_NAME "physics")
 set(CPACK_GENERATOR "DEB;ZIP")
 
@@ -49,4 +49,7 @@ set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT example@example.com)
+
+install(TARGETS physics DESTINATION bin)
+
 include(CPack)
